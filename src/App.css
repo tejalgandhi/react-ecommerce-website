@@ -1,0 +1,13 @@
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: fixed;
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: white;
+}
+input {
+  background-color: white;
+}
