@@ -11,7 +11,7 @@ const Navbar = () => {
           <div className="navbar_list_left">
             <h2>CartWish</h2>
 
-            <form class="search-container">
+            <form className="search-container">
               <input
                 type="text"
                 id="search-input"

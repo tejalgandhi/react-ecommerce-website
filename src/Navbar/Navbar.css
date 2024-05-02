@@ -14,17 +14,19 @@
 }
 
 .nav {
-  position: fixed;
   right: 0;
   left: 0;
   z-index: 1030;
   min-height: 50px;
+  min-width: 50px;
+  width: 100%;
   margin-bottom: 20px;
   border: 1px solid transparent;
   top: 0;
   border-width: 0 0 1px;
   background-color: #f8f8f8;
   border-color: #e7e7e7;
+  position: fixed;
 }
 .container {
   padding-right: 15px;
