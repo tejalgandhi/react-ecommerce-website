@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductCard.css";
 
 import Iphone from "../assets/iphone13.jpeg";
-import Basket from "../assets/basket.jpeg";
+import Basket from "../assets/cart.png";
 import star from "../assets/star.png";
 
 const ProductCard = ({ id, title, subtitle, price }) => {
@@ -23,11 +23,8 @@ const ProductCard = ({ id, title, subtitle, price }) => {
             </p>
             <p className="product_review_count">120</p>
           </div>
-          <p>
-            <button>
-              <img src={Basket}></img>
-              Add to Cart
-            </button>
+          <p className="add_to_cart">
+            <img src={Basket}></img>
           </p>
         </footer>
       </div>
