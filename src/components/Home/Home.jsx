@@ -1,7 +1,7 @@
 import React from "react";
 import HeroSection from "./HeroSection";
-import Iphone from "../assets/iphone15.jpeg";
-import Iphone14 from "../assets/iphone14.jpeg";
+import Iphone from "../../assets/iphone15.jpeg";
+import Iphone14 from "../../assets/iphone14.jpeg";
 import FeatureProducts from "./FeatureProducts";
 
 const Home = () => {

@@ -1,9 +1,9 @@
 import React from "react";
 import "./ProductCard.css";
 
-import Iphone from "../assets/iphone13.jpeg";
-import Basket from "../assets/cart.png";
-import star from "../assets/star.png";
+import Iphone from "../../assets/iphone13.jpeg";
+import Basket from "../../assets/cart.png";
+import star from "../../assets/star.png";
 
 const ProductCard = ({ id, title, subtitle, price }) => {
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import AllRouting from "./AllRouting/AllRouting";
-import Navbar from "./Navbar/Navbar";
+import AllRouting from "./components/AllRouting/AllRouting";
+import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 
 function App() {

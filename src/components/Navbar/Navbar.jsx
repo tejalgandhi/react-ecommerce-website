@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import LinkWithIcon from "./LinkWithIcon";
 
-import rocket from "../assets/rocket.png";
-import star from "../assets/star.png";
-import idButton from "../assets/id.png";
-import memo from "../assets/memo.jpeg";
-import order from "../assets/order.jpeg";
-import lock from "../assets/lock.png";
+import rocket from "../../assets/rocket.png";
+import star from "../../assets/star.png";
+import idButton from "../../assets/id.png";
+import memo from "../../assets/memo.jpeg";
+import order from "../../assets/order.jpeg";
+import lock from "../../assets/lock.png";
 
 const Navbar = () => {
   return (
