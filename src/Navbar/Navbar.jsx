@@ -5,49 +5,46 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="header">
-      <nav className="nav">
-        <div className="container">
-          <div className="navbar_list_left">
-            <h2>CartWish</h2>
+    <nav className="align_center navbar">
+      <div className="align_center">
+        <h1 className="navbar_heading">CartWish</h1>
 
-            <form className="search-container">
-              <input
-                type="text"
-                id="search-input"
-                placeholder="Search Products"
-              />
-              <button type="submit" id="search-button">
-                Search
-              </button>
-            </form>
-          </div>
-          <ul className="navbar_list">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Products</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Login</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Signup</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">My Orders</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Logout</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Cart</NavLink>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+        <form className="align_center navbar_form">
+          <input
+            type="text"
+            id="search-input"
+            className="navbar_search"
+            placeholder="Search Products"
+          />
+          <button type="submit" id="search-button" className="search_button">
+            Search
+          </button>
+        </form>
+        {/* <ul className="navbar_list">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Products</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Signup</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">My Orders</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Logout</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Cart</NavLink>
+          </li>
+        </ul> */}
+      </div>
+    </nav>
   );
 };
 

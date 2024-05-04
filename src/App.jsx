@@ -8,7 +8,6 @@ function App() {
     <div className="app">
       <Navbar />
       <main className="main_content">
-        All routing
         <AllRouting />
       </main>
     </div>

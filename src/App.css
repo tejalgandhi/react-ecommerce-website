@@ -1,16 +1,4 @@
-#root {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  position: fixed;
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: white;
-}
-.main_content {
-  padding-top: 50px; /* Adjust the value to match the height of the navbar */
-}
-input {
-  background-color: white;
+.app {
+  display: grid;
+  grid-template-rows: 80px auto;
 }
