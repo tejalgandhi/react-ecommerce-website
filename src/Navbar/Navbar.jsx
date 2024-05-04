@@ -1,7 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import LinkWithIcon from "./LinkWithIcon";
+
+import rocket from "../assets/rocket.png";
+import star from "../assets/star.png";
+import idButton from "../assets/id.png";
+import memo from "../assets/memo.jpeg";
+import order from "../assets/order.jpeg";
+import lock from "../assets/lock.png";
 
 const Navbar = () => {
   return (
@@ -12,7 +20,6 @@ const Navbar = () => {
         <form className="align_center navbar_form">
           <input
             type="text"
-            id="search-input"
             className="navbar_search"
             placeholder="Search Products"
           />
@@ -20,29 +27,18 @@ const Navbar = () => {
             Search
           </button>
         </form>
-        {/* <ul className="navbar_list">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Products</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Login</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Signup</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">My Orders</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Logout</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Cart</NavLink>
-          </li>
-        </ul> */}
+        <div className="align_center navbar_links">
+          <LinkWithIcon title="Home" link="/" emoji={rocket}></LinkWithIcon>
+          <LinkWithIcon title="Products" link="/" emoji={star}></LinkWithIcon>
+          <LinkWithIcon title="Login" link="/" emoji={idButton}></LinkWithIcon>
+          <LinkWithIcon title="Sign Up" link="/" emoji={order}></LinkWithIcon>
+          <LinkWithIcon title="My Orders" link="/" emoji={memo}></LinkWithIcon>
+          <LinkWithIcon title="Logout" link="/" emoji={lock}></LinkWithIcon>
+          <NavLink to="/cart" className="align_center">
+            Cart
+            <p className="align_center cart_counts">0</p>
+          </NavLink>
+        </div>
       </div>
     </nav>
   );
