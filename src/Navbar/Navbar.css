@@ -9,7 +9,6 @@
 }
 
 .navbar_form {
-  width: 450px;
   height: 40px;
   border: 1px solid #cdcdcd;
   border-radius: 5px;
@@ -37,7 +36,7 @@
 }
 
 .navbar_links {
-  margin-left: 20px;
+  margin-left: 120px;
 }
 .navbar_links > a {
   margin: 10px;
