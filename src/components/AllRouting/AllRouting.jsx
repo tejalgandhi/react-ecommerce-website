@@ -4,6 +4,7 @@ import Home from "../Home/Home";
 import NotFound from "../NotFound/NotFound";
 import ProductsPage from "../Products/ProductsPage";
 import SingleProductPage from "../SingleProduct/SingleProductPage";
+import CartPage from "../Cart/CartPage";
 
 const AllRouting = () => {
   return (
@@ -11,6 +12,7 @@ const AllRouting = () => {
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/product-detail" element={<SingleProductPage />} />
+      <Route path="/cart" element={<CartPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
