@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProductCard.css";
+import { Link } from "react-router-dom";
 
 import Iphone from "../../assets/iphone13.jpeg";
 import Basket from "../../assets/cart.png";
@@ -9,9 +10,9 @@ const ProductCard = ({ id, title, subtitle, price }) => {
   return (
     <article className="product_card">
       <div className="product_image">
-        <a href="">
+        <Link to="/product-detail">
           <img src={Iphone} alt="product-image" />
-        </a>
+        </Link>
       </div>
       <div className="product_details">
         <h3 className="product_price">$19.99</h3>
