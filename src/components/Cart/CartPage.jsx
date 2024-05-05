@@ -1,7 +1,10 @@
 import React from "react";
 import "./CartPage.css";
 import user from "../../assets/user.jpeg";
+import remove from "../../assets/remove.png";
+
 import Table from "../Common/Table";
+import QuantityInput from "../SingleProduct/QuantityInput";
 const CartPage = () => {
   return (
     <section className="align_center cart_page">
@@ -18,9 +21,17 @@ const CartPage = () => {
           <tr>
             <td>Iphone 14</td>
             <td>$999</td>
-            <td>1</td>
+            <td className="align_center table_quantity_input">
+              <QuantityInput />
+            </td>
             <td>$999</td>
-            <td>Remove</td>
+            <td>
+              <img
+                src={remove}
+                alt="Remove icone"
+                className="cart_remove_icon"
+              />
+            </td>
           </tr>
         </tbody>
       </Table>
