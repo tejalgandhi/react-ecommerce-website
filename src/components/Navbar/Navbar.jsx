@@ -29,7 +29,11 @@ const Navbar = () => {
         </form>
         <div className="align_center navbar_links">
           <LinkWithIcon title="Home" link="/" emoji={rocket}></LinkWithIcon>
-          <LinkWithIcon title="Products" link="/" emoji={star}></LinkWithIcon>
+          <LinkWithIcon
+            title="Products"
+            link="/products"
+            emoji={star}
+          ></LinkWithIcon>
           <LinkWithIcon title="Login" link="/" emoji={idButton}></LinkWithIcon>
           <LinkWithIcon title="Sign Up" link="/" emoji={order}></LinkWithIcon>
           <LinkWithIcon title="My Orders" link="/" emoji={memo}></LinkWithIcon>

@@ -2,11 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Home/Home";
 import NotFound from "../NotFound/NotFound";
+import ProductsPage from "../Products/ProductsPage";
 
 const AllRouting = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/products" element={<ProductsPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
