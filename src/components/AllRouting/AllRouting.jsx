@@ -6,6 +6,7 @@ import ProductsPage from "../Products/ProductsPage";
 import SingleProductPage from "../SingleProduct/SingleProductPage";
 import CartPage from "../Cart/CartPage";
 import MyOrderPage from "../MyOrder/MyOrderPage";
+import LoginPage from "../Authentication/LoginPage";
 
 const AllRouting = () => {
   return (
@@ -15,6 +16,7 @@ const AllRouting = () => {
       <Route path="/product-detail" element={<SingleProductPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/order" element={<MyOrderPage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
