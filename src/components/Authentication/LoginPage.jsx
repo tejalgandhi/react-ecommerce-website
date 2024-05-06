@@ -1,19 +1,23 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import "./LoginPage.css";
 
 const LoginPage = () => {
-  const phoneRef = useRef(null);
-  const nameRef = useRef(null);
+  //   const phoneRef = useRef(null);
+  //   const nameRef = useRef(null);
+  const [user, setUser] = useState({
+    name: "",
+    phone: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      name: "",
-      phone: 0,
-    };
-    user.name = nameRef.current.value;
-    user.phone = parseInt(phoneRef.current.value);
+    // const user = {
+    //   name: "",
+    //   phone: 0,
+    // };
+    // user.name = nameRef.current.value;
+    // user.phone = parseInt(phoneRef.current.value);
     console.log(user);
   };
 
@@ -26,7 +30,9 @@ const LoginPage = () => {
             <label htmlFor="name">Name:</label>
             <input
               type="text"
-              ref={nameRef}
+              //   ref={nameRef}
+              onChange={(e) => setUser({ ...user, name: e.target.value })}
+              value={user.name}
               id="name"
               className="form_text_input"
               placeholder="Enter your Name"
@@ -36,7 +42,11 @@ const LoginPage = () => {
             <label htmlFor="phone_number">Phone Number:</label>
             <input
               type="number"
-              ref={phoneRef}
+              onChange={(e) =>
+                setUser({ ...user, phone: parseInt(e.target.value) })
+              }
+              value={user.phone}
+              //   ref={phoneRef}
               id="phone_number"
               className="form_text_input"
               placeholder="Enter your Phone Number"
