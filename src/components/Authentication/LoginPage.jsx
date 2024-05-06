@@ -23,8 +23,12 @@ const LoginPage = () => {
   //     console.log(user);
   //   };
 
-  const { register, handleSubmit } = useForm({});
-  console.log(register("name"));
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, ...formState },
+  } = useForm({});
+  console.log(formState.errors);
   const onSubmit = (formData) => console.log(formData);
   //
   return (
@@ -46,8 +50,14 @@ const LoginPage = () => {
               id="name"
               className="form_text_input"
               placeholder="Enter your Name"
-              {...register("name")}
+              {...register("name", { required: true, minLength: 3 })}
             ></input>
+            {errors.name?.type === "required" && (
+              <em className="form_error">Please Enter Your Name</em>
+            )}
+            {errors.name?.type === "minLength" && (
+              <em className="form_error">Name Should be 3 or more character</em>
+            )}
           </div>
           <div>
             <label htmlFor="phone_number">Phone Number:</label>
