@@ -2,6 +2,18 @@ import React, { useRef, useState } from "react";
 
 import "./LoginPage.css";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  email: z
+    .string()
+    .email({ message: "Please enter valid email address" })
+    .min(3),
+  password: z
+    .string()
+    .min(8, { message: "Password should be atleast 8 character." }),
+});
 
 const LoginPage = () => {
   //using ref
@@ -27,7 +39,7 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors, ...formState },
-  } = useForm({});
+  } = useForm({ resolver: zodResolver(schema) });
   console.log(formState.errors);
   const onSubmit = (formData) => console.log(formData);
   //
@@ -41,38 +53,46 @@ const LoginPage = () => {
         <h2>Login Form</h2>
         <div className="form_inputs">
           <div>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="email">Email:</label>
             <input
-              type="text"
+              type="email"
               //   ref={nameRef}
               //   onChange={(e) => setUser({ ...user, name: e.target.value })}
               //   value={user.name}
-              id="name"
+              id="email"
               className="form_text_input"
-              placeholder="Enter your Name"
-              {...register("name", { required: true, minLength: 3 })}
+              placeholder="Enter your Email"
+              //   {...register("email", { required: true, minLength: 3 })}
+              {...register("email")}
             ></input>
-            {errors.name?.type === "required" && (
+            {errors.email && (
+              <em className="form_error">{errors.email.message}</em>
+            )}
+            {/* {errors.name?.type === "required" && (
               <em className="form_error">Please Enter Your Name</em>
             )}
             {errors.name?.type === "minLength" && (
               <em className="form_error">Name Should be 3 or more character</em>
-            )}
+            )} */}
           </div>
           <div>
-            <label htmlFor="phone_number">Phone Number:</label>
+            <label htmlFor="password">Password:</label>
             <input
-              type="number"
+              type="password"
               //   onChange={(e) =>
               //     setUser({ ...user, phone: parseInt(e.target.value) })
               //   }
               //   value={user.phone}
               //   ref={phoneRef}
-              id="phone_number"
+              id="password"
               className="form_text_input"
-              placeholder="Enter your Phone Number"
-              {...register("phone", { valueAsNumber: true })}
+              placeholder="Enter your password"
+              //   {...register("password", { valueAsNumber: true })}
+              {...register("password")}
             ></input>
+            {errors.password && (
+              <em className="form_error">{errors.password.message}</em>
+            )}
             {/* <button
               type="button"
               onClick={() => (passwordRef.current.type = "password")}
