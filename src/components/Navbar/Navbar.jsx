@@ -36,7 +36,11 @@ const Navbar = () => {
           ></LinkWithIcon>
           <LinkWithIcon title="Login" link="/" emoji={idButton}></LinkWithIcon>
           <LinkWithIcon title="Sign Up" link="/" emoji={order}></LinkWithIcon>
-          <LinkWithIcon title="My Orders" link="/" emoji={memo}></LinkWithIcon>
+          <LinkWithIcon
+            title="My Orders"
+            link="/order"
+            emoji={memo}
+          ></LinkWithIcon>
           <LinkWithIcon title="Logout" link="/" emoji={lock}></LinkWithIcon>
           <NavLink to="/cart" className="align_center">
             Cart
