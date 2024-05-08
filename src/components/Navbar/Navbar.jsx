@@ -39,7 +39,11 @@ const Navbar = () => {
             link="/login"
             emoji={idButton}
           ></LinkWithIcon>
-          <LinkWithIcon title="Sign Up" link="/" emoji={order}></LinkWithIcon>
+          <LinkWithIcon
+            title="Sign Up"
+            link="/register"
+            emoji={order}
+          ></LinkWithIcon>
           <LinkWithIcon
             title="My Orders"
             link="/order"
