@@ -1,32 +1,45 @@
 import React from "react";
 import "./ProductCard.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-import Iphone from "../../assets/iphone13.jpeg";
 import Basket from "../../assets/cart.png";
 import star from "../../assets/star.png";
 
-const ProductCard = ({ id, title, subtitle, price }) => {
+const ProductCard = ({
+  id,
+  image,
+  title,
+  description,
+  price,
+  stock,
+  rating,
+  ratingCount,
+}) => {
+  console.log(image);
+
   return (
     <article className="product_card">
       <div className="product_image">
-        <Link to="/product-detail">
-          <img src={Iphone} alt="product-image" />
-        </Link>
+        <NavLink to={`/product-detail/${id}`}>
+          <img src={image} alt="product-image" />
+        </NavLink>
       </div>
       <div className="product_details">
-        <h3 className="product_price">$19.99</h3>
-        <p className="product_title">Tailored Jeans</p>
+        <h3 className="product_price">${price}</h3>
+        <p className="product_title">{title}</p>
         <footer className="align_center product_info_footer">
           <div className="align_center">
             <p className="align_center product_rating">
-              <img src={star}></img>5.0
+              <img src={star}></img>
+              {rating}
             </p>
-            <p className="product_review_count">120</p>
+            <p className="product_review_count">{ratingCount}</p>
           </div>
-          <p className="add_to_cart">
-            <img src={Basket}></img>
-          </p>
+          {stock > 0 && (
+            <p className="add_to_cart">
+              <img src={Basket}></img>
+            </p>
+          )}
         </footer>
       </div>
     </article>

@@ -32,6 +32,9 @@ const SingleProductPage = () => {
             />
           ))}
         </div>
+        {/* {images.map((image, index) => (
+                <img key={index} src={`${backendStorageUrl}/${image}`} alt={`Image ${index + 1}`} />
+            ))} */}
         <img
           src={product.images[selectedImage]}
           alt={product.title}
