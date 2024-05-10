@@ -15,8 +15,6 @@ const ProductCard = ({
   rating,
   ratingCount,
 }) => {
-  console.log(image);
-
   return (
     <article className="product_card">
       <div className="product_image">

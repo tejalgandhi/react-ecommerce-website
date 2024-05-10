@@ -15,7 +15,6 @@ const ProductList = () => {
       .then((res) => setProducts(res.data.data.data))
       .catch((err) => setError(err.message));
   }, []);
-  console.log(products);
   return (
     <section className="products_list_section">
       <header className="align_center product_list_header">
