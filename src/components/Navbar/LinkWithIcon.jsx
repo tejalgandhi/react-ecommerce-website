@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./LinkWithIcon.css";
 
-const LinkWithIcon = ({ title, link, emoji, sidebar }) => {
+const LinkWithIcon = ({ id, title, link, emoji, sidebar }) => {
   return (
     <NavLink
       to={link}

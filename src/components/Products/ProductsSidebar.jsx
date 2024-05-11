@@ -10,7 +10,7 @@ const ProductsSidebar = () => {
   const [errors, setErrors] = useState("");
   useEffect(() => {
     apiClient
-      .get("/categories1")
+      .get("/categories")
       .then((res) => setCategory(res.data.data))
       .catch((e) => setErrors(e));
   }, []);
@@ -23,7 +23,8 @@ const ProductsSidebar = () => {
         <div className="category_links">
           {category.map((c) => (
             <LinkWithIcon
-              id={c._id}
+              key={c.id}
+              id={c.id}
               title={c.name}
               link={`products?category=${c.name}`}
               emoji={plus}
