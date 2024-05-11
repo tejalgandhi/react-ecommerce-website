@@ -9,7 +9,6 @@ import ProductSidebarSkeleton from "./ProductSidebarSkeleton.jsx";
 const ProductsSidebar = () => {
   const { data: categories, error, isLoading } = useData("/categories");
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  console.log(isLoading);
 
   if (categories && Object.keys(categories).length > 0) {
     return (
@@ -21,7 +20,7 @@ const ProductsSidebar = () => {
               key={c.id}
               id={c.id}
               title={c.name}
-              link={`products?category=${c.name}`}
+              link={`/products?category=${c.name}`}
               emoji={plus}
               sidebar={true}
             ></LinkWithIcon>
