@@ -1,27 +1,18 @@
-import React, { useState, useEffect } from "react";
-import apiClient from "../../../utils/api-client";
+import React from "react";
 
 import "./ProductsSidebar.css";
 import plus from "../../assets/plus.jpeg";
 import LinkWithIcon from "../Navbar/LinkWithIcon";
+import useData from "../../hooks/useData.js";
 
 const ProductsSidebar = () => {
-  const [category, setCategory] = useState([]);
-  const [errors, setErrors] = useState("");
-  useEffect(() => {
-    apiClient
-      .get("/categories")
-      .then((res) => setCategory(res.data.data))
-      .catch((e) => setErrors(e));
-  }, []);
-  console.log(category);
-
-  if (category && Object.keys(category).length > 0) {
+  const { data: categories, error } = useData("/categories");
+  if (categories && Object.keys(categories).length > 0) {
     return (
       <aside className="products_sidebar">
         <h2>Category</h2>
         <div className="category_links">
-          {category.map((c) => (
+          {categories.map((c) => (
             <LinkWithIcon
               key={c.id}
               id={c.id}
@@ -37,7 +28,7 @@ const ProductsSidebar = () => {
   } else {
     return (
       <aside className="products_sidebar">
-        {errors && <em className="form-error">{errors.message}</em>}
+        {error && <em className="form-error">{error.message}</em>}
         <h2>No Category Found</h2>
       </aside>
     );
