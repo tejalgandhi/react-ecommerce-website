@@ -4,9 +4,13 @@ import "./ProductsSidebar.css";
 import plus from "../../assets/plus.jpeg";
 import LinkWithIcon from "../Navbar/LinkWithIcon";
 import useData from "../../hooks/useData.js";
+import ProductSidebarSkeleton from "./ProductSidebarSkeleton.jsx";
 
 const ProductsSidebar = () => {
-  const { data: categories, error } = useData("/categories");
+  const { data: categories, error, isLoading } = useData("/categories");
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  console.log(isLoading);
+
   if (categories && Object.keys(categories).length > 0) {
     return (
       <aside className="products_sidebar">
@@ -28,8 +32,9 @@ const ProductsSidebar = () => {
   } else {
     return (
       <aside className="products_sidebar">
-        {error && <em className="form-error">{error.message}</em>}
-        <h2>No Category Found</h2>
+        {!isLoading && error && <em className="form-error">{error.message}</em>}
+        {isLoading &&
+          skeletons.map((s, index) => <ProductSidebarSkeleton key={index} />)}
       </aside>
     );
   }

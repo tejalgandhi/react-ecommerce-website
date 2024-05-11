@@ -4,8 +4,11 @@ import "./ProductsList.css";
 import ProductCard from "./ProductCard";
 import useData from "../../hooks/useData";
 
+import ProductCardSkeleton from "./ProductCardSkeleton";
+
 const ProductList = () => {
-  const { data: products, error } = useData("/products");
+  const { data: products, error, isLoading } = useData("/products");
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
     <section className="products_list_section">
@@ -33,6 +36,9 @@ const ProductList = () => {
       </header>
       <div className="products_list">
         {error && <em className="form_error">{error.message}</em>}
+        {isLoading &&
+          skeletons.map((s, index) => <ProductCardSkeleton key={index} />)}
+
         {products &&
           products.map((product) => (
             <ProductCard
