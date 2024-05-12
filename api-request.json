@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "fbb5c826-b3e1-4751-b62a-9919ca8c32ec",
     "name": "ecommerce-website",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
     "_exporter_id": "12259761"
   },
   "item": [
@@ -14,12 +14,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": {
-              "raw": "http://lumen-ecommerce-website.test/api/products",
-              "protocol": "http",
-              "host": ["lumen-ecommerce-website", "test"],
-              "path": ["api", "products"]
-            }
+            "url": "http://lumen-ecommerce-website.test/api/products"
           },
           "response": []
         },
@@ -28,12 +23,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": {
-              "raw": "http://lumen-ecommerce-website.test/api/product/3",
-              "protocol": "http",
-              "host": ["lumen-ecommerce-website", "test"],
-              "path": ["api", "product", "3"]
-            }
+            "url": "http://lumen-ecommerce-website.test/api/product/3"
           },
           "response": []
         },
@@ -42,12 +32,7 @@
           "request": {
             "method": "DELETE",
             "header": [],
-            "url": {
-              "raw": "http://lumen-ecommerce-website.test/api/product/2",
-              "protocol": "http",
-              "host": ["lumen-ecommerce-website", "test"],
-              "path": ["api", "product", "2"]
-            }
+            "url": "http://lumen-ecommerce-website.test/api/product/2"
           },
           "response": []
         },
@@ -60,23 +45,28 @@
               "mode": "formdata",
               "formdata": [
                 {
+                  "key": "category_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
                   "key": "title",
-                  "value": "product 2",
+                  "value": "Apple iPhone 15 Pro Max (256 GB) - Natural Titanium",
                   "type": "text"
                 },
                 {
                   "key": "description",
-                  "value": "product description example",
+                  "value": "FORGED IN TITANIUM — iPhone 15 Pro Max has a strong and light aerospace-grade titanium design with a textured matte-glass back. It also features a Ceramic Shield front that’s tougher than any smartphone glass. And it’s splash, water, and dust resistant.",
                   "type": "text"
                 },
                 {
                   "key": "stock",
-                  "value": "10",
+                  "value": "20",
                   "type": "text"
                 },
                 {
                   "key": "price",
-                  "value": "12",
+                  "value": "1500",
                   "type": "text"
                 },
                 {
@@ -87,31 +77,40 @@
                 {
                   "key": "images[0]",
                   "type": "file",
-                  "src": "/C:/Users/tejal/Downloads/red-wine-3.jpeg"
+                  "src": "/C:/Users/tejal/Downloads/iphone_15_pro_max.jpg"
                 },
                 {
                   "key": "images[1]",
                   "type": "file",
-                  "src": "/C:/Users/tejal/Downloads/red-wine.jpeg"
+                  "src": "/C:/Users/tejal/Downloads/iphone_15_pro_max_1.jpg"
                 },
                 {
                   "key": "images[2]",
                   "type": "file",
-                  "src": "/C:/Users/tejal/Downloads/red-wine-2.jpeg"
+                  "src": "/C:/Users/tejal/Downloads/iphone_15_pro_max_2.jpg"
                 },
                 {
                   "key": "images[3]",
                   "type": "file",
-                  "src": "/C:/Users/tejal/Downloads/red-wine-1.jpeg"
+                  "src": "/C:/Users/tejal/Downloads/iphone_15_pro_max_3.jpg"
                 }
               ]
             },
-            "url": {
-              "raw": "http://lumen-ecommerce-website.test/api/product",
-              "protocol": "http",
-              "host": ["lumen-ecommerce-website", "test"],
-              "path": ["api", "product"]
-            }
+            "url": "http://lumen-ecommerce-website.test/api/product"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "category",
+      "item": [
+        {
+          "name": "get all category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://lumen-ecommerce-website.test/api/categories"
           },
           "response": []
         }
