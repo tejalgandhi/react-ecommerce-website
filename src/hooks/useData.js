@@ -10,7 +10,7 @@ const useData = (endPoint, customConfig, deps = []) => {
     apiClient
       .get(endPoint, customConfig)
       .then((res) => {
-        setData(res.data.data.data);
+        setData(res.data.data);
         setIsLoading(false);
       })
       .catch((e) => {
@@ -18,7 +18,6 @@ const useData = (endPoint, customConfig, deps = []) => {
         setIsLoading(false);
       });
   }, deps);
-
   return { data, error, isLoading };
 };
 

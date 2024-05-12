@@ -9,12 +9,12 @@ import ProductSidebarSkeleton from "./ProductSidebarSkeleton.jsx";
 const ProductsSidebar = () => {
   const { data: categories, error, isLoading } = useData("/categories");
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  if (categories && Object.keys(categories).length > 0) {
+  if (categories && Object.keys(categories.data).length > 0) {
     return (
       <aside className="products_sidebar">
         <h2>Category</h2>
         <div className="category_links">
-          {categories.map((c) => (
+          {categories.data.map((c) => (
             <LinkWithIcon
               key={c.id}
               id={c.id}
