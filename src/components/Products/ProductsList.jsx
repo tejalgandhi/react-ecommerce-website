@@ -6,10 +6,12 @@ import useData from "../../hooks/useData";
 
 import ProductCardSkeleton from "./ProductCardSkeleton";
 import { useSearchParams } from "react-router-dom";
+import { object } from "zod";
 
 const ProductList = () => {
   const [search, setSearch] = useSearchParams();
   const category = search.get("category");
+  const page = search.get("page");
 
   const {
     data: products,
@@ -20,11 +22,18 @@ const ProductList = () => {
     {
       params: {
         category,
+        page,
       },
     },
-    [category]
+    [category, page]
   );
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const handlePageChange = (page) => {
+    const currentParams = Object.fromEntries([...search]);
+    console.log(currentParams);
+    setSearch({ ...currentParams, page: page });
+  };
 
   return (
     <section className="products_list_section">
@@ -67,12 +76,12 @@ const ProductList = () => {
               ratingCount="120"
             />
           ))}
-        {console.log(products)}
         {Object.keys(products || []).length === 0 && !isLoading ? (
           <h2>No Products</h2>
         ) : (
           ""
         )}
+        <button onClick={() => handlePageChange(2)}> Page 2</button>
       </div>
     </section>
   );
