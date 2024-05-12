@@ -5,9 +5,25 @@ import ProductCard from "./ProductCard";
 import useData from "../../hooks/useData";
 
 import ProductCardSkeleton from "./ProductCardSkeleton";
+import { useSearchParams } from "react-router-dom";
 
 const ProductList = () => {
-  const { data: products, error, isLoading } = useData("/products");
+  const [search, setSearch] = useSearchParams();
+  const category = search.get("category");
+
+  const {
+    data: products,
+    error,
+    isLoading,
+  } = useData(
+    "/products",
+    {
+      params: {
+        category,
+      },
+    },
+    [category]
+  );
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
@@ -38,7 +54,6 @@ const ProductList = () => {
         {error && <em className="form_error">{error.message}</em>}
         {isLoading &&
           skeletons.map((s, index) => <ProductCardSkeleton key={index} />)}
-
         {products &&
           products.map((product) => (
             <ProductCard
@@ -52,6 +67,12 @@ const ProductList = () => {
               ratingCount="120"
             />
           ))}
+        {console.log(products)}
+        {Object.keys(products || []).length === 0 && !isLoading ? (
+          <h2>No Products</h2>
+        ) : (
+          ""
+        )}
       </div>
     </section>
   );
