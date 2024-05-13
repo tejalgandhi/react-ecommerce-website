@@ -5,9 +5,13 @@ import "./Pagination.css";
 const Pagination = ({ totalPosts, postsPerPage, onClick, currentPage }) => {
   let pages = [];
 
-  for (let i = 1; i < Math.ceil(totalPosts / postsPerPage); i++) {
+  console.log(totalPosts);
+  console.log(postsPerPage);
+
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pages.push(i);
   }
+  console.log(pages);
   return (
     <>
       {pages.length > 1 && (

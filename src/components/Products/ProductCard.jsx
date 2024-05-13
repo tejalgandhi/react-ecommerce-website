@@ -24,7 +24,9 @@ const ProductCard = ({
       </div>
       <div className="product_details">
         <h3 className="product_price">${price}</h3>
-        <p className="product_title">{`${title.slice(0, 40)}...`}</p>
+        <p className="product_title">
+          {title ? `${title.slice(0, 40)}...` : ""}
+        </p>
         <footer className="align_center product_info_footer">
           <div className="align_center">
             <p className="align_center product_rating">

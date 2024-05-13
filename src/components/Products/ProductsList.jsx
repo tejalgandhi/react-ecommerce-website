@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./ProductsList.css";
 import ProductCard from "./ProductCard";
@@ -13,7 +13,7 @@ const ProductList = () => {
   const [search, setSearch] = useSearchParams();
   const category = search.get("category");
   const page = search.get("page");
-  const postsPerPage = 3;
+  const postsPerPage = 6;
 
   const {
     data: products,
@@ -38,6 +38,22 @@ const ProductList = () => {
     console.log(currentParams);
     setSearch({ ...currentParams, page: page });
   };
+  // const handlePageChange = (page) => {
+  //   const currentParams = Object.fromEntries([...search]);
+  //   setSearch({ ...currentParams, page: parseInt(currentParams.page) + 1 });
+  // };
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const { scrollTop, clientHeight, scrollHeight } =
+  //       document.documentElement;
+  //     if (scrollTop + clientHeight >= scrollHeight - 1) {
+  //       setPage((prev) => prev + 1);
+  //       // handlePageChange();
+  //     }
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <section className="products_list_section">
