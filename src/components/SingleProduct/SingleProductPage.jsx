@@ -27,6 +27,12 @@ const SingleProductPage = () => {
   // const [product, setProduct] = useState({});
   const [selectedImage, setSelectedImage] = useState(0);
   const { data: product, error, isLoading } = useData(`/product/${id}`, []);
+  const [qty, setQty] = useState(1);
+  const handleQtyChange = (amount) => {
+    if ((amount === -1 && qty > 1) || amount === 1) {
+      setQty((prevQty) => prevQty + amount);
+    }
+  };
   //   useEffect(() => {
 
   //   apiClient
@@ -38,6 +44,7 @@ const SingleProductPage = () => {
   // Render a message or fallback content if product is empty or undefined
   return (
     <>
+      {error && <em className="form_error">{error}</em>}
       {isLoading && <Loading />}
       {!isLoading && !product && (
         <p className="align_center margin_center">No product available</p>
@@ -70,7 +77,7 @@ const SingleProductPage = () => {
             <p className="single_product_description">{product.description}</p>
             <p className="single_product_price">${product.price.toFixed(2)}</p>
             <h2 className="quantity_title">Quantity:</h2>
-            <QuantityInput />
+            <QuantityInput qty={qty} setQty={setQty} stock={product.stock} />
             <button className="search_button add_cart">Add to Cart</button>
           </div>
         </section>
