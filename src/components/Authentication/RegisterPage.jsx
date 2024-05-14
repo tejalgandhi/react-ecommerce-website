@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 
 import "./RegisterPage.css";
 import user from "../../assets/user.jpeg";
+import { signup } from "../../Service/UserService.js";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -35,14 +36,22 @@ const schema = z
   );
 const LoginPage = () => {
   const [profilePic, setProfilePic] = useState(null);
+  const [formError, setFormError] = useState("");
 
   const {
     register,
     handleSubmit,
     formState: { errors, ...formState },
   } = useForm({ resolver: zodResolver(schema) });
-  console.log(formState.errors);
-  const onSubmit = (formData) => console.log(formData);
+  const onSubmit = async (formData) => {
+    try {
+      await signup(formData, profilePic);
+    } catch (error) {
+      if (error.response) {
+        setFormError(error.response.data.message);
+      }
+    }
+  };
   console.log(profilePic);
   return (
     <section className="align_center form_page">
@@ -144,6 +153,7 @@ const LoginPage = () => {
               <em className="form_error">{errors.delivery_address.message}</em>
             )}
           </div>
+          {formError && <em className="form_error">{formError}</em>}
           <button type="submit" className="search_button form_submit">
             Submit
           </button>
