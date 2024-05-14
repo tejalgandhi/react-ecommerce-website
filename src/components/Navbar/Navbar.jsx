@@ -11,7 +11,7 @@ import memo from "../../assets/memo.jpeg";
 import order from "../../assets/order.jpeg";
 import lock from "../../assets/lock.png";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   return (
     <nav className="align_center navbar">
       <div className="align_center">
@@ -34,26 +34,36 @@ const Navbar = () => {
             link="/products"
             emoji={star}
           ></LinkWithIcon>
-          <LinkWithIcon
-            title="Login"
-            link="/login"
-            emoji={idButton}
-          ></LinkWithIcon>
-          <LinkWithIcon
-            title="Sign Up"
-            link="/register"
-            emoji={order}
-          ></LinkWithIcon>
-          <LinkWithIcon
-            title="My Orders"
-            link="/order"
-            emoji={memo}
-          ></LinkWithIcon>
-          <LinkWithIcon title="Logout" link="/" emoji={lock}></LinkWithIcon>
-          <NavLink to="/cart" className="align_center">
-            Cart
-            <p className="align_center cart_counts">0</p>
-          </NavLink>
+          {!user && (
+            <>
+              <LinkWithIcon
+                title="Login"
+                link="/login"
+                emoji={idButton}
+              ></LinkWithIcon>
+              <LinkWithIcon
+                title="Sign Up"
+                link="/register"
+                emoji={order}
+              ></LinkWithIcon>
+            </>
+          )}
+
+          {user && (
+            <>
+              <LinkWithIcon
+                title="My Orders"
+                link="/order"
+                emoji={memo}
+              ></LinkWithIcon>
+
+              <NavLink to="/cart" className="align_center">
+                Cart
+                <p className="align_center cart_counts">0</p>
+              </NavLink>
+              <LinkWithIcon title="Logout" link="/" emoji={lock}></LinkWithIcon>
+            </>
+          )}
         </div>
       </div>
     </nav>

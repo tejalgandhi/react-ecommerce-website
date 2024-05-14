@@ -6,7 +6,7 @@ import { login } from "../../Service/UserService.js";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z
@@ -20,7 +20,7 @@ const schema = z.object({
 
 const LoginPage = () => {
   const [formError, setFormError] = useState("");
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   //using ref
   //   const phoneRef = useRef(null);
   //   const nameRef = useRef(null);
@@ -50,7 +50,8 @@ const LoginPage = () => {
       const { data } = await login(formData);
       console.log(data.data.token);
       localStorage.setItem("token", data.data.token);
-      navigate("/");
+      window.location = "/";
+      // navigate("/");
     } catch (err) {
       if (err.response) {
         setFormError(err.response.data.message);
