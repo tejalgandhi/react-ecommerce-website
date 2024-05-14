@@ -9,3 +9,9 @@ export function signup(user, profile) {
   body.append("profile_pic", profile);
   return apiClient.post("/user/register", body);
 }
+export function login(user) {
+  const body = new FormData();
+  body.append("email", user.email);
+  body.append("password", user.password);
+  return apiClient.post("/user/login", body);
+}

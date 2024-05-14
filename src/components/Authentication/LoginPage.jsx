@@ -2,8 +2,11 @@ import React, { useRef, useState } from "react";
 
 import "./LoginPage.css";
 import { useForm } from "react-hook-form";
+import { login } from "../../Service/UserService.js";
+
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z
@@ -16,6 +19,8 @@ const schema = z.object({
 });
 
 const LoginPage = () => {
+  const [formError, setFormError] = useState("");
+  let navigate = useNavigate();
   //using ref
   //   const phoneRef = useRef(null);
   //   const nameRef = useRef(null);
@@ -40,8 +45,18 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors, ...formState },
   } = useForm({ resolver: zodResolver(schema) });
-  console.log(formState.errors);
-  const onSubmit = (formData) => console.log(formData);
+  const onSubmit = async (formData) => {
+    try {
+      const { data } = await login(formData);
+      console.log(data.data.token);
+      localStorage.setItem("token", data.data.token);
+      navigate("/");
+    } catch (err) {
+      if (err.response) {
+        setFormError(err.response.data.message);
+      }
+    }
+  };
   //
   return (
     <section className="align_center form_page">
@@ -106,6 +121,7 @@ const LoginPage = () => {
               Show Button
             </button> */}
           </div>
+          {formError && <em className="form_error">{formError}</em>}
           <button type="submit" className="search_button form_submit">
             Submit
           </button>
