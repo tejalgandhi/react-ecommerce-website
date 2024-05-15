@@ -11,7 +11,7 @@ import memo from "../../assets/memo.jpeg";
 import order from "../../assets/order.jpeg";
 import lock from "../../assets/lock.png";
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, cartCount }) => {
   return (
     <nav className="align_center navbar">
       <div className="align_center">
@@ -59,7 +59,7 @@ const Navbar = ({ user }) => {
 
               <NavLink to="/cart" className="align_center">
                 Cart
-                <p className="align_center cart_counts">0</p>
+                <p className="align_center cart_counts">{cartCount}</p>
               </NavLink>
               <LinkWithIcon
                 title="Logout"

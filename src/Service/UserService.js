@@ -1,4 +1,5 @@
 import apiClient from "../../utils/api-client";
+import { jwtDecode } from "jwt-decode";
 
 const tokenName = "token";
 
@@ -27,8 +28,18 @@ export function logout() {
 export function getUser() {
   try {
     const jwt = localStorage.getItem(tokenName);
-    return jwtDecode(jwt);
+
+    if (!jwt) {
+      throw new Error("Token not found");
+    }
+
+    const decoded = jwtDecode(jwt);
+    console.log(decoded);
+
+    return decoded;
   } catch (error) {
+    // localStorage.clear();
+    console.log(error);
     return null;
   }
 }

@@ -22,7 +22,7 @@ const products = {
   stock: 10,
 };
 
-const SingleProductPage = () => {
+const SingleProductPage = ({ addToCart }) => {
   const { id } = useParams();
   // const [product, setProduct] = useState({});
   const [selectedImage, setSelectedImage] = useState(0);
@@ -78,7 +78,12 @@ const SingleProductPage = () => {
             <p className="single_product_price">${product.price.toFixed(2)}</p>
             <h2 className="quantity_title">Quantity:</h2>
             <QuantityInput qty={qty} setQty={setQty} stock={product.stock} />
-            <button className="search_button add_cart">Add to Cart</button>
+            <button
+              className="search_button add_cart"
+              onClick={() => addToCart(product, qty)}
+            >
+              Add to Cart
+            </button>
           </div>
         </section>
       )}

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
 
 import AllRouting from "./components/AllRouting/AllRouting";
 import Navbar from "./components/Navbar/Navbar";
@@ -8,11 +7,13 @@ import { getUser } from "./Service/UserService";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     try {
       const jwtUser = getUser();
-      if (Date.now() >= jwtUser.exp * 100) {
+      console.log(jwtUser);
+      if (Date.now() <= jwtUser.exp * 100) {
         localStorage.removeItem("token");
         location.reload();
       } else {
@@ -22,11 +23,24 @@ function App() {
     } catch (error) {}
   }, []);
 
+  const addToCart = (product, qty) => {
+    const updatedCart = [...cart];
+    const productIndex = updatedCart.findIndex(
+      (item) => item.product.id === product.id
+    );
+    if (productIndex === -1) {
+      updatedCart.push({ product: product, qty: qty });
+    } else {
+      updatedCart[productIndex].qty += qty;
+    }
+    setCart(updatedCart);
+  };
+
   return (
     <div className="app">
-      <Navbar user={user} />
+      <Navbar user={user} cartCount={cart.length} />
       <main className="main_content">
-        <AllRouting />
+        <AllRouting addToCart={addToCart} />
       </main>
     </div>
   );
