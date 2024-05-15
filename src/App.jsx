@@ -4,16 +4,21 @@ import { jwtDecode } from "jwt-decode";
 import AllRouting from "./components/AllRouting/AllRouting";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
+import { getUser } from "./Service/UserService";
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     try {
-      const jwt = localStorage.getItem("token");
-      const jwtUser = jwtDecode(jwt);
-      setUser(jwtUser);
-      console.log(jwtUser);
+      const jwtUser = getUser();
+      if (Date.now() >= jwtUser.exp * 100) {
+        localStorage.removeItem("token");
+        location.reload();
+      } else {
+        setUser(jwtUser);
+        console.log(jwtUser);
+      }
     } catch (error) {}
   }, []);
 

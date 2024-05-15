@@ -61,7 +61,11 @@ const Navbar = ({ user }) => {
                 Cart
                 <p className="align_center cart_counts">0</p>
               </NavLink>
-              <LinkWithIcon title="Logout" link="/" emoji={lock}></LinkWithIcon>
+              <LinkWithIcon
+                title="Logout"
+                link="/logout"
+                emoji={lock}
+              ></LinkWithIcon>
             </>
           )}
         </div>

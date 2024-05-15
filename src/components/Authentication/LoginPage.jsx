@@ -47,9 +47,8 @@ const LoginPage = () => {
   } = useForm({ resolver: zodResolver(schema) });
   const onSubmit = async (formData) => {
     try {
-      const { data } = await login(formData);
-      console.log(data.data.token);
-      localStorage.setItem("token", data.data.token);
+      await login(formData);
+
       window.location = "/";
       // navigate("/");
     } catch (err) {
