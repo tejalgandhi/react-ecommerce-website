@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import AllRouting from "./components/AllRouting/AllRouting";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
-import { getUser } from "./Service/UserService";
+import { getJwt, getUser } from "./Service/UserService";
+import setAuthToken from "./Service/setAuthToken";
+setAuthToken(getJwt());
 
 function App() {
   const [user, setUser] = useState(null);

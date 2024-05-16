@@ -22,16 +22,12 @@ export async function login(user) {
 }
 
 export function logout() {
-  localStorage.removeItem("logout");
+  localStorage.removeItem(tokenName);
 }
 
 export function getUser() {
   try {
     const jwt = localStorage.getItem(tokenName);
-
-    if (!jwt) {
-      throw new Error("Token not found");
-    }
 
     const decoded = jwtDecode(jwt);
     console.log(decoded);
@@ -42,4 +38,8 @@ export function getUser() {
     console.log(error);
     return null;
   }
+}
+
+export function getJwt() {
+  return localStorage.getItem(tokenName);
 }
