@@ -4,6 +4,7 @@ import AllRouting from "./components/AllRouting/AllRouting";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 import { getJwt, getUser } from "./Service/UserService";
+import { addToCartApi } from "./Service/CartService";
 import setAuthToken from "./Service/setAuthToken";
 setAuthToken(getJwt());
 
@@ -36,6 +37,14 @@ function App() {
       updatedCart[productIndex].qty += qty;
     }
     setCart(updatedCart);
+    addToCartApi(product.id, qty)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+        setCart(cart);
+      });
   };
 
   return (
