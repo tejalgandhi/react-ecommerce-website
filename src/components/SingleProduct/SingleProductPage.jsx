@@ -50,10 +50,10 @@ const SingleProductPage = ({ addToCart }) => {
         <p className="align_center margin_center">No product available</p>
       )}
       {!isLoading && product && Object.keys(product).length > 0 && (
-        <section className="align_center single_product">
+        <section className="align_center single_product" >
           <div className="align_center">
-            <div className="single_product_thumbnails">
-              {console.log(product.images)}
+            <div className="single_product_thumbnails"  key={product.id}>
+
               {product.images.map((image, index) => (
                 <img
                   src={image}

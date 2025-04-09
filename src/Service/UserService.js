@@ -30,7 +30,6 @@ export function getUser() {
     const jwt = localStorage.getItem(tokenName);
 
     const decoded = jwtDecode(jwt);
-    console.log(decoded);
 
     return decoded;
   } catch (error) {

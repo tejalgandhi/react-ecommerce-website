@@ -39,10 +39,9 @@ function App() {
     setCart(updatedCart);
     addToCartApi(product.id, qty)
       .then((res) => {
-        console.log(res.data);
+
       })
       .catch((err) => {
-        console.log(err.response);
         setCart(cart);
       });
   };
