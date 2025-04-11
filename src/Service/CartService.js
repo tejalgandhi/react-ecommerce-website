@@ -15,3 +15,9 @@ export function addToCartApi(product_id, qty) {
 
   return apiClient.post(`/cart/add/${product_id}`, body, config);
 }
+
+// api.js or cartService.js
+export function getCartApi (){
+  return apiClient.get('/cart'); // returns array of cart items
+};
+
