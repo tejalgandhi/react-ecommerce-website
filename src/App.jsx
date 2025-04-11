@@ -15,7 +15,8 @@ setAuthToken(getJwt());
 function App() {
 
     const [user, setUser] = useState(null);
-    const [cart, setCart] = useState(0);
+    const [cart, setCart] = useState([]);
+    const [cartQty, setCartQty] = useState(0);
 
     useEffect(() => {
         try {
@@ -27,8 +28,10 @@ function App() {
                 setUser(jwtUser);
                 getCartApi()
                     .then((res) => {
-                        const cartItems = res.data.totalItemQty || [];
+                        const cartItemsQty = res.data.totalItemQty || [];
+                        const cartItems = res.data.product || [];
                         setCart(cartItems); // ✅ always an array
+                        setCartQty(cartItemsQty); // ✅ always an array
                     })
                     .catch((err) => {
                         console.error("Failed to fetch cart", err);
@@ -53,8 +56,10 @@ function App() {
                 // } else {
                 //   updatedCart[productIndex].qty += qty;
                 // }
-                const cartItems = res.data.totalItemQty || [];
+                const cartItemsQty = res.data.totalItemQty || [];
+                const cartItems = res.data.product || [];
                 setCart(cartItems); // ✅ always an array
+                setCartQty(cartItemsQty); // ✅ always an array
                 // setCart(updatedCart); // ✅ update state with updated cart array
                 toast.success(res.data.message); // ✅ show success toast
             })
@@ -68,9 +73,9 @@ function App() {
         <>
             <ToastContainer/>
             <div className="app">
-                <Navbar user={user} cartCount={cart}/>
+                <Navbar user={user} cartCount={cartQty}/>
                 <main className="main_content">
-                    <AllRouting addToCart={addToCart}/>
+                    <AllRouting addToCart={addToCart} cartItems = {cart}/>
                 </main>
             </div>
         </>

@@ -11,7 +11,7 @@ import Logout from "../Authentication/Logout";
 
 import RegisterPage from "../Authentication/RegisterPage";
 
-const AllRouting = ({ addToCart }) => {
+const AllRouting = ({ addToCart, cartItems }) => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -20,7 +20,7 @@ const AllRouting = ({ addToCart }) => {
         path="/product-detail/:id"
         element={<SingleProductPage addToCart={addToCart} />}
       />
-      <Route path="/cart" element={<CartPage />} />
+      <Route path="/cart" element={<CartPage cartItems = {cartItems}/>} />
       <Route path="/order" element={<MyOrderPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/logout" element={<Logout />} />
