@@ -2,20 +2,28 @@ import React from "react";
 import "./MyOrderPage.css";
 import Table from "../Common/Table";
 
-const MyOrderPage = () => {
+const MyOrderPage = ({ cartItems }) => {
   return (
-    <section className="align_center myorder_page">
-      <Table headings={["Orders", "Products", "Total", "Status"]}>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Iphone 14, power bank</td>
-            <td>$1299 </td>
-            <td>shipped</td>
-          </tr>
-        </tbody>
-      </Table>
-    </section>
+      <div>
+        {cartItems.length === 0 ? (
+            <p>No items in your cart.</p>
+        ) : (
+            <section className="align_center myorder_page">
+              <Table headings={["Orders", "Products", "Total", "Status"]}>
+                <tbody>
+                {cartItems.items.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.product.name}</td>
+                      <td>{item.quantity}</td>
+                      <td>{item.total_price}</td>
+                      <td>{item.id}</td>
+                    </tr>
+                ))}
+                </tbody>
+              </Table>
+            </section>
+        )}
+      </div>
   );
 };
 

@@ -28,11 +28,7 @@ const SingleProductPage = ({ addToCart }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const { data: product, error, isLoading } = useData(`/product/${id}`, []);
   const [qty, setQty] = useState(1);
-  const handleQtyChange = (amount) => {
-    if ((amount === -1 && qty > 1) || amount === 1) {
-      setQty((prevQty) => prevQty + amount);
-    }
-  };
+
   //   useEffect(() => {
 
   //   apiClient
@@ -77,7 +73,7 @@ const SingleProductPage = ({ addToCart }) => {
             <p className="single_product_description">{product.description}</p>
             <p className="single_product_price">${product.price.toFixed(2)}</p>
             <h2 className="quantity_title">Quantity:</h2>
-            <QuantityInput qty={qty} setQty={setQty} stock={product.stock} />
+            <QuantityInput qty={qty} stock={product.stock} />
             <button
               className="search_button add_cart"
               onClick={() => addToCart(product, qty)}

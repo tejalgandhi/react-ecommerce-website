@@ -14,6 +14,7 @@ body {
 .align_center {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .margin_center {
   margin-top: 100px;

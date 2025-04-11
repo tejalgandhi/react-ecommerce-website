@@ -5,7 +5,7 @@ import remove from "../../assets/remove.png";
 
 import Table from "../Common/Table";
 import QuantityInput from "../SingleProduct/QuantityInput";
-const CartPage = () => {
+const CartPage = ({cartItems}) => {
   return (
     <section className="align_center cart_page">
       <div className="align_center user_info">
@@ -16,25 +16,34 @@ const CartPage = () => {
         </div>
       </div>
       {/* cart table */}
-      <Table headings={["Item", "Price", "Quantity", "Total", "Remove"]}>
-        <tbody>
-          <tr>
-            <td>Iphone 14</td>
-            <td>$999</td>
-            <td className="align_center table_quantity_input">
-              <QuantityInput />
-            </td>
-            <td>$999</td>
-            <td>
-              <img
-                src={remove}
-                alt="Remove icone"
-                className="cart_remove_icon"
-              />
-            </td>
-          </tr>
-        </tbody>
-      </Table>
+      {cartItems.length === 0 ? (
+          <p>No items in your cart.</p>
+      ) : (
+            <Table headings={["Item", "Price", "Quantity", "Total", "Remove"]}>
+              <tbody>
+              {cartItems.items.map((item, index) => (
+                    <tr>
+                      <td>{item.product.title}</td>
+                      <td>${item.product.price}</td>
+                      <td className="align_center table_quantity_input">
+                        <QuantityInput qty={item.quantity}  stock={item.product.stock} itemId = {item.id}/>
+                      </td>
+                      <td>${item.total_price}</td>
+                      <td>
+                        <img
+                            src={remove}
+                            alt="Remove icone"
+                            className="cart_remove_icon"
+                        />
+                      </td>
+                    </tr>
+              ))}
+              </tbody>
+            </Table>
+
+          // </section>
+      )}
+
       <table className="cart_bill">
         <tbody>
           <tr>

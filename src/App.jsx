@@ -24,6 +24,7 @@ function App() {
             if (Date.now() <= jwtUser.exp * 100) {
                 localStorage.removeItem("token");
                 location.reload();
+                setUser(null);
             } else {
                 setUser(jwtUser);
                 getCartApi()
@@ -34,28 +35,21 @@ function App() {
                         setCartQty(cartItemsQty); // ✅ always an array
                     })
                     .catch((err) => {
-                        console.error("Failed to fetch cart", err);
-                        setCart(0); // fallback to empty array
+                        // console.error("Failed to fetch cart", err);
+                        setCartQty(0); // fallback to empty array
+                        setCart([]);
+                        setUser(null);// fallback to empty array
                     });
 
             }
         } catch (error) {
+            setUser(null);
         }
     }, []);
 
     const addToCart = (product, qty) => {
         addToCartApi(product.id, qty)
             .then((res) => {
-                // const updatedCart = [...cart];
-                // const productIndex = updatedCart.findIndex(
-                //     (item) => item.product.id === product.id
-                // );
-                //
-                // if (productIndex === -1) {
-                //   updatedCart.push({ product: product, qty: qty });
-                // } else {
-                //   updatedCart[productIndex].qty += qty;
-                // }
                 const cartItemsQty = res.data.totalItemQty || [];
                 const cartItems = res.data.product || [];
                 setCart(cartItems); // ✅ always an array
@@ -65,7 +59,8 @@ function App() {
             })
             .catch((err) => {
                 toast.error('Unauthorized');
-                setCart(0); // clear cart on failure (optional)
+                setCart([]); // clear cart on failure (optional)
+                setCartQty(0); // clear cart on failure (optional)
             });
     };
 
@@ -73,7 +68,7 @@ function App() {
         <>
             <ToastContainer/>
             <div className="app">
-                <Navbar user={user} cartCount={cartQty}/>
+                <Navbar user={user} cartItems={cart}  cartCount={cartQty}/>
                 <main className="main_content">
                     <AllRouting addToCart={addToCart} cartItems = {cart}/>
                 </main>

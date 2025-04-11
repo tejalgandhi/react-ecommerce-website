@@ -21,7 +21,7 @@ const AllRouting = ({ addToCart, cartItems }) => {
         element={<SingleProductPage addToCart={addToCart} />}
       />
       <Route path="/cart" element={<CartPage cartItems = {cartItems}/>} />
-      <Route path="/order" element={<MyOrderPage />} />
+      <Route path="/order" element={<MyOrderPage cartItems = {cartItems}/>} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/logout" element={<Logout />} />
       <Route path="/register" element={<RegisterPage />} />
